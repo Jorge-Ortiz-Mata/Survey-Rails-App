@@ -16,6 +16,7 @@ module.exports = {
       "signUp": "#ecffc8",
       "fontColor": "#0c5d75",
       "footerGray": "#f5f5f5",
+      "formBack": "#1f2937",
       "editIcon": "#047487",
       "removeIcon": "#920404",
       "evaluationStrong": "#126f05",

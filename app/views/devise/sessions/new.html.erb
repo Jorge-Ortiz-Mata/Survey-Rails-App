@@ -1,26 +1,31 @@
-<h2>Log in</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+<main class="h-screen bg-mainColor flex flex-row-reverse">
+  <section class="w-3/6 flex justify-center items-center">
+    <div>
+      <%= image_tag("ruby.png", width: "300") %>
     </div>
-  <% end %>
+  </section>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
+  <section class="w-3/6 flex justify-center items-center">
+    <div class="p-16 bg-formBack rounded-lg">
+      <h2 class="text-white font-semibold text-3xl text-center py-5">Log in</h2>
 
-<%= render "devise/shared/links" %>
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="field flex flex-col">
+          <%= f.label :email, class: "text-white text-lg text-center p-2" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "rounded-lg text-sm font-semibold" %>
+        </div>
+
+        <div class="field flex flex-col">
+          <%= f.label :password, class: "text-white text-lg text-center p-2" %>
+          <%= f.password_field :password, autocomplete: "current-password", class: "rounded-lg text-sm font-semibold" %>
+        </div>
+
+        <div class="actions py-5 flex justify-center">
+          <div class="bg-signIn text-black font-semibold p-4 rounded-lg">
+            <%= f.submit "Log in" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </section>
+</main>
