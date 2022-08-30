@@ -7,8 +7,16 @@
     </ul>
     <ul class="flex gap-3">
       <% if current_user %>
+        <li>
+          <%= current_user.email %>
+        </li>
         <li class="bg-red-700 rounded">
           <%= button_to 'Sign out', destroy_user_session_path, method: :delete, class: "py-1 px-4 text-sm text-black font-semibold" %>
+        </li>
+        <li class="flex items-center">
+          <%= button_to root_path, id: "open_options_icon" do %>
+            <i class="fa-solid fa-gear"></i>
+          <% end %>
         </li>
       <% else %>
         <li class="bg-signIn rounded">

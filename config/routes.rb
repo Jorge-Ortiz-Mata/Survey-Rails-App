@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :chapters
+  resources :evaluations
   devise_for :users
 
   authenticated(:user) do
