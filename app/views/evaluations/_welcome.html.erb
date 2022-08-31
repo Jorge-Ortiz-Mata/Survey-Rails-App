@@ -1,0 +1,22 @@
+<section class="flex justify-around items-center h-screen">
+    <div>
+        <%= image_tag("6099984.jpg", width: "400") %>
+    </div>
+
+    <div>
+        <h1 class="text-center text-3xl font-bold text-evaluationStrong">Evaluations</h1>
+        <p class="text-center py-2 font-semibold text-evaluationStrong">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, <br>
+            sed do eiusmod tempor incididunt ut labore et dolore <br>
+            magna aliqua. At risus viverra adipiscing at in. 
+        </p>
+
+        <div class="flex justify-center my-4">
+            <%= button_to root_path id:"create_evaluation_welcome" do %>
+                <div class="p-3 bg-evaluationStrong text-white text-sm font-semibold rounded-lg">
+                    Create evaluation
+                </div>
+            <% end %>
+        </div>
+    </div>
+</section>
