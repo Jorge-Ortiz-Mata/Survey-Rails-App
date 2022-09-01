@@ -12,7 +12,7 @@ class EvaluationsController < ApplicationController
 
   # GET /evaluations/new
   def new
-    @evaluation = Evaluation.new
+    @evaluation = Section.new
   end
 
   # GET /evaluations/1/edit
