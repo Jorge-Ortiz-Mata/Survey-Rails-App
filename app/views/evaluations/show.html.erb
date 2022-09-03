@@ -1,15 +1,25 @@
-<div class="mx-auto md:w-2/3 w-full flex">
-  <div class="mx-auto">
-    <% if notice.present? %>
-      <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
-    <% end %>
-
-    <%= render @evaluation %>
-
-    <%= link_to 'Edit this evaluation', edit_evaluation_path(@evaluation), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <div class="inline-block ml-2">
-      <%= button_to 'Destroy this evaluation', evaluation_path(@evaluation), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
-    </div>
-    <%= link_to 'Back to evaluations', evaluations_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+<section id="<%= dom_id @evaluation %>" class="border-2 w-9/12 mx-auto flex h-48 rounded-lg shadow-lg p-2 my-20">
+  <div class="w-48">
+      <%= image_tag("Upload.png", class: "object-fit h-full w-full") %>
   </div>
-</div>
+
+  <div class="w-full p-5">
+    <p class="text-3xl font-bold text-evaluationStrong">
+      <%= @evaluation.name %> 
+      <i class="fa-solid fa-list-check ml-5"></i>
+    </p>
+
+    <p class="my-2 font-smibold text-evaluationStrong">
+        <%= @evaluation.description %>
+    </p>
+
+    <p class="font-semibold text-sm text-evaluationStrong">
+        <%= @evaluation.user.email %>
+    </p>
+  </div>
+
+  <div class="flex flex-col justify-between p-2">
+    <i class="fa-solid fa-pen text-editIcon"></i>
+    <i class="fa-solid fa-trash text-removeIcon"></i>
+  </div>
+</section>
