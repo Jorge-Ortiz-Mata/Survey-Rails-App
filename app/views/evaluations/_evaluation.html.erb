@@ -1,21 +1,36 @@
-<div id="<%= dom_id evaluation %>">
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Name:</strong>
-    <%= evaluation.name %>
-  </p>
+<div id="<%= dom_id evaluation %>" class="border-2 w-9/12 mx-auto flex h-40 rounded-lg shadow-lg p-2 my-5">
+  <div class="w-40">
+    <%= image_tag("Upload.png", class: "object-fit h-full w-full") %>
+  </div>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Description:</strong>
-    <%= evaluation.description %>
-  </p>
+  <div class="w-full p-5">
+    <p>
+      Name:
+      <strong class="font-semibold">
+        <%= evaluation.name %>
+      </strong>
+    </p>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Type:</strong>
-    <%= evaluation.section_type %>
-  </p>
+    <p>
+      Description:
+      <strong class="font-semibold">
+        <%= evaluation.description %>
+      </strong>
+    </p>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">User:</strong>
-    <%= evaluation.user_id %>
-  </p>
+    <p>
+      User:
+      <strong class="font-semibold">
+        <%= evaluation.user.email %>
+      </strong>
+    </p>
+
+    <div class="flex justify-end">
+      <%= button_to evaluation_path(evaluation), method: :get do %>
+        <div class="rounded-lg bg-evaluationStrong px-5 py-2 text-white text-sm font-semibold">
+          See more
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>
