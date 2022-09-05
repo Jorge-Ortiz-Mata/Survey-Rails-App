@@ -1,7 +1,7 @@
 <%= turbo_frame_tag 'modal' do %>
   <section class="absolute z-10 top-0 left-0 h-screen bg-mainColor w-full opacity-90 flex justify-center items-center">
     <div class="p-24 border-2 rounded-lg bg-black w-3/5">
-      <h2 class="text-3xl text-white font-semibold py-5 text-center">Create Evaluation.</h2>
+      <h2 class="text-3xl text-white font-semibold py-5 text-center"><%= title %></h2>
       <%= yield %>
     </div>
   </section>

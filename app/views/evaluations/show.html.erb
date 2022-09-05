@@ -1,3 +1,4 @@
+<%= turbo_frame_tag 'modal' %>
 <section id="<%= dom_id @evaluation %>" class="border-2 w-9/12 mx-auto flex h-48 rounded-lg shadow-lg p-2 my-20">
   <div class="w-48">
       <%= image_tag("Upload.png", class: "object-fit h-full w-full") %>
@@ -19,7 +20,9 @@
   </div>
 
   <div class="flex flex-col justify-between p-2">
-    <i class="fa-solid fa-pen text-editIcon"></i>
+    <%= link_to edit_evaluation_path(@evaluation), id:"edit_evaluation_icon", data: {turbo_frame: 'modal'} do %>
+      <i class="fa-solid fa-pen text-editIcon"></i>
+    <% end %>
     <i class="fa-solid fa-trash text-removeIcon"></i>
   </div>
 </section>
