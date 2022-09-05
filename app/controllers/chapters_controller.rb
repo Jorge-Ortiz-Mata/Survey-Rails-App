@@ -50,7 +50,7 @@ class ChaptersController < ApplicationController
 
   private
     def set_chapter
-      @chapter = Chapter.find(params[:id])
+      @chapter = Section.find(params[:id])
     end
 
     def chapter_params
