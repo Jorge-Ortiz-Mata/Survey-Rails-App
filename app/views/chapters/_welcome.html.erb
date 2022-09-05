@@ -1,0 +1,23 @@
+<%= turbo_frame_tag 'modal' %>
+<section class="flex flex-row-reverse justify-around items-center p-32" id="chapters_all">
+    <div>
+        <%= image_tag("4884176.jpg", width: "500") %>
+    </div>
+
+    <div>
+        <h1 class="text-center text-3xl font-bold text-chapterStrong">Chapters</h1>
+        <p class="text-center py-2 font-semibold text-chapterStrong">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, <br>
+            sed do eiusmod tempor incididunt ut labore et dolore <br>
+            magna aliqua. At risus viverra adipiscing at in. 
+        </p>
+
+        <div class="flex justify-center my-4">
+            <%= link_to new_evaluation_path, id:"create_chapter_welcome", data: {turbo_frame: 'modal'} do %>
+                <div class="p-3 bg-chapterStrong text-white text-sm font-semibold rounded-lg">
+                    Create chapter.
+                </div>
+            <% end %>
+        </div>
+    </div>
+</section>

@@ -1,1 +1,5 @@
-Chapters
+<% if @chapters.any? %>
+    <%= render "chapters", chapters: @chapters %>
+<% else %>
+    <%= render 'welcome' %>
+<% end %>
