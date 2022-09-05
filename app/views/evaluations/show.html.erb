@@ -23,6 +23,9 @@
     <%= link_to edit_evaluation_path(@evaluation), id:"edit_evaluation_icon", data: {turbo_frame: 'modal'} do %>
       <i class="fa-solid fa-pen text-editIcon"></i>
     <% end %>
-    <i class="fa-solid fa-trash text-removeIcon"></i>
+    <%= button_to evaluation_path(@evaluation), id: "remove_evaluation_icon", method: :delete,
+     form: { data: { turbo_confirm: "Are you sure?" } } do %>
+      <i class="fa-solid fa-trash text-removeIcon"></i>
+    <% end %>
   </div>
 </section>
