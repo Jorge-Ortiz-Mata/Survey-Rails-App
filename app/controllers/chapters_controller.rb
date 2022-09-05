@@ -9,18 +9,21 @@ class ChaptersController < ApplicationController
   end
 
   def new
-    @chapter = Chapter.new
+    @chapter = Section.new
   end
 
   def edit
   end
 
   def create
-    @chapter = Chapter.new(chapter_params)
+    @chapter = current_user.sections.build(chapter_params)
+    @chapter.section_type = 2
 
     respond_to do |format|
       if @chapter.save
-        format.html { redirect_to chapter_url(@chapter), notice: "Chapter was successfully created." }
+        format.turbo_stream { render turbo_stream: turbo_stream.replace('chapters_all', 
+                                                  partial: 'chapters/chapters', locals: { chapters: Section.all }) }
+
       else
         format.html { render :new, status: :unprocessable_entity }
       end
@@ -51,6 +54,6 @@ class ChaptersController < ApplicationController
     end
 
     def chapter_params
-      params.require(:chapter).permit(:name, :description, :type, :body, :user_id)
+      params.require(:section).permit(:name, :description, :body)
     end
 end

@@ -1,32 +1,36 @@
-<div id="<%= dom_id chapter %>">
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Name:</strong>
-    <%= chapter.name %>
-  </p>
+<div id="<%= dom_id chapter %>" class="border-2 w-9/12 mx-auto flex h-40 rounded-lg shadow-lg p-2 my-5">
+  <div class="w-40">
+    <%= image_tag("Upload.png", class: "object-fit h-full w-full") %>
+  </div>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Description:</strong>
-    <%= chapter.description %>
-  </p>
+  <div class="w-full p-5">
+    <p>
+      Name:
+      <strong class="font-semibold">
+        <%= chapter.name %>
+      </strong>
+    </p>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Type:</strong>
-    <%= chapter.type %>
-  </p>
+    <p>
+      Description:
+      <strong class="font-semibold">
+        <%= chapter.description %>
+      </strong>
+    </p>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Body:</strong>
-    <%= chapter.body %>
-  </p>
+    <p>
+      User:
+      <strong class="font-semibold">
+        <%= chapter.user.email %>
+      </strong>
+    </p>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">User:</strong>
-    <%= chapter.user_id %>
-  </p>
-
-  <% if action_name != "show" %>
-    <%= link_to "Show this chapter", chapter, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to 'Edit this chapter', edit_chapter_path(chapter), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
-    <hr class="mt-6">
-  <% end %>
+    <div class="flex justify-end">
+      <%= button_to chapter_path(chapter), method: :get do %>
+        <div class="rounded-lg bg-chapterStrong px-5 py-2 text-white text-sm font-semibold">
+          See more
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>

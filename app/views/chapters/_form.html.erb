@@ -1,42 +1,21 @@
-<%= form_with(model: chapter, class: "contents") do |form| %>
-  <% if chapter.errors.any? %>
-    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
-      <h2><%= pluralize(chapter.errors.count, "error") %> prohibited this chapter from being saved:</h2>
-
-      <ul>
-        <% chapter.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="my-5">
-    <%= form.label :name %>
-    <%= form.text_field :name, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+<%= form_with(model: @chapter, url: url, data: { controller: "reset", action: "submit->reset#resetForm" }) do |f| %>
+    
+  <div class="flex flex-col py-4">
+    <%= f.label :name, class:"text-white font-semibold" %>
+    <%= f.text_field :name, class:"p-2 rounded-lg text-sm font-semibold" %>
   </div>
 
-  <div class="my-5">
-    <%= form.label :description %>
-    <%= form.text_field :description, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  <div class="flex flex-col py-4">
+    <%= f.label :description, class:"text-white font-semibold" %>
+    <%= f.text_field :description, class:"p-2 rounded-lg text-sm font-semibold" %>
   </div>
 
-  <div class="my-5">
-    <%= form.label :type %>
-    <%= form.text_field :type, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :body %>
-    <%= form.text_area :body, rows: 4, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="inline">
-    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+  <div class="flex py-2 justify-end gap-5">
+    <span class="bg-evaluationStrong p-2 rounded-lg">
+      <%= f.submit 'Create chapter', class:"text-white font-semibold" %>
+    </span>
+    <span class="bg-removeIcon p-2 rounded-lg">
+      <%= link_to 'Cancel', :back, class:"text-white font-semibold" %>
+    </span>
   </div>
 <% end %>
