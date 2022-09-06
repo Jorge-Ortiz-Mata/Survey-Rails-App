@@ -13,3 +13,9 @@
  *= require_tree .
  *= require_self
  */
+#question_question_type{
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 12px;
+    font-weight: 600;
+}
