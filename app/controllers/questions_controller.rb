@@ -1,5 +1,9 @@
 class QuestionsController < ApplicationController
   before_action :set_evaluation, only: %i[create]
+  before_action :set_question, only: %i[edit]
+
+  def edit
+  end
   
   def create
     @question = @evaluation.questions.build(question_params)
@@ -29,5 +33,9 @@ class QuestionsController < ApplicationController
 
     def question_params
       params.require(:question).permit(:name, :question_type)
+    end
+
+    def set_question
+      @question = Question.find(params[:id])
     end
 end
