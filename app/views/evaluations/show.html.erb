@@ -1,5 +1,5 @@
 <%= turbo_frame_tag 'modal' %>
-<section id="<%= dom_id @evaluation %>" class="border-2 w-9/12 mx-auto flex h-48 rounded-lg shadow-lg p-2 my-20">
+<section id="<%= dom_id @evaluation %>" class="border-2 w-9/12 mx-auto flex h-48 rounded-lg shadow-lg p-2 my-16">
   <div class="w-48">
       <%= image_tag("Upload.png", class: "object-fit h-full w-full") %>
   </div>
@@ -30,7 +30,7 @@
   </div>
 </section>
 
-<section class="flex m-10 border-2">
+<section class="flex m-10">
   <%= render 'questions/form' %>
   <%= render 'questions/questions', evaluation: @evaluation %>
 </section>

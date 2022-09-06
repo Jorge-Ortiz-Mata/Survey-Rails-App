@@ -1,9 +1,11 @@
-<div>
-    <p>
-        Name: <%= question.name %>
+<div class="my-2 flex justify-between p-2 border-2 bg-white rounded-lg">
+    <p class="text-sm">
+        Name: 
+        <span class="font-semibold"><%= question.name %></span>
     </p>
 
-    <p>
-        Question type: <%= question.question_type %>
+    <p class="text-sm">
+        Question type:
+        <span class="font-semibold"><%= question.question_type.humanize %></span>
     </p>
 </div>
