@@ -29,3 +29,8 @@
     <% end %>
   </div>
 </section>
+
+<section class="flex m-10 border-2">
+  <%= render 'questions/form' %>
+  <%= render 'questions/questions', evaluation: @evaluation %>
+</section>

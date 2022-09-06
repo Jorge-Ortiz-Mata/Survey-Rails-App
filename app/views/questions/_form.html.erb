@@ -1,0 +1,20 @@
+<div class="border-2 w-3/12 m-5">
+    <%= form_for [@evaluation, @question], url: section_question_create_path(@evaluation) do |f| %>
+
+    <div>
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+    </div>
+
+    <div>
+        <%= f.label :question_type %>
+        <%= f.select :question_type, options_for_select(Question.question_types.map {|key, value| [key.titleize, Question.question_types.key(value)]}, 
+                @question.question_type)  %>
+    </div>
+
+    <div>
+        <%= f.submit "Create question." %>
+    </div>
+
+    <% end %>
+</div>

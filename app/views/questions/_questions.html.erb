@@ -1,0 +1,12 @@
+<div class="border-2 w-9/12 m-5" id="questions_all">
+    <div>
+        <h2>Questions (<%= evaluation.questions.count %>)</h2>
+    </div>
+
+
+    <div>
+        <% evaluation.questions.each do |question| %>
+            <%= render 'questions/question', question: question %>
+        <% end %>
+    </div>
+</div>
