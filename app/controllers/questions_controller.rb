@@ -1,6 +1,6 @@
 class QuestionsController < ApplicationController
-  before_action :set_evaluation, only: %i[create]
-  before_action :set_question, only: %i[edit]
+  before_action :set_evaluation, only: %i[create update]
+  before_action :set_question, only: %i[edit update]
 
   def edit
   end
@@ -20,6 +20,13 @@ class QuestionsController < ApplicationController
   end
 
   def update
+    if @question.update(question_params)
+      respond_to do |format|
+        format.turbo_stream { render turbo_stream: turbo_stream.replace("question_#{@question.id}", 
+                                                  partial: 'questions/question', 
+                                                  locals: { question: @question }) }
+      end
+    end
   end
 
   def destroy
