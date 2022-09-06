@@ -1,7 +1,6 @@
 <%= turbo_frame_tag "question_#{@question.id}" do %>
 	<div class="my-2 flex justify-between p-4 border-2 bg-white rounded-lg">
-		<%= form_with(model: @question, url: section_question_update_path(id: @question.id), 
-						class:"") do |f| %>
+		<%= form_with(model: @question, url: section_question_update_path(id: @question.id)) do |f| %>
 
 			<h4 class="text-2xl font-bold text-evaluationStrong text-center py-3">Update question</h4>
 
