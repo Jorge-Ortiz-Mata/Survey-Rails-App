@@ -1,12 +1,12 @@
 <div class="border-2 w-9/12 m-5 p-4 rounded-lg bg-footerGray" id="questions_all">
-    <div class="py-3">
-        <h2 class="font-semibold text-2xl">Questions (<%= evaluation.questions.count %>)</h2>
-    </div>
+  <div class="py-3">
+    <h2 class="font-semibold text-2xl">Questions (<%= evaluation.questions.count %>)</h2>
+  </div>
 
 
-    <div class="h-96 overflow-y-auto">
-        <% evaluation.questions.each do |question| %>
-            <%= render 'questions/question', question: question %>
-        <% end %>
-    </div>
+  <div class="h-96 overflow-y-auto">
+    <% evaluation.questions.each do |question| %>
+      <%= render 'questions/question', question: question %>
+    <% end %>
+  </div>
 </div>
