@@ -6,7 +6,10 @@ Rails.application.routes.draw do
     delete "question/destroy", to: "questions#destroy"
   end
 
-  resources :chapters
+  resources :chapters do
+    get 'body/edit', to: "chapters#body"
+  end
+
   resources :evaluations
   
   devise_for :users

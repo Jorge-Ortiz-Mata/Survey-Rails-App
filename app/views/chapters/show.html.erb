@@ -30,9 +30,23 @@
   </div>
 </section>
 
-<section class="flex">
-  <%= turbo_frame_tag "chapter_body", class: "border-2" do %>
-    <h2>Body</h2>
-    <p>Hello world</p>
+<section class="flex p-10">
+  <%= turbo_frame_tag "chapter_body", class: "border-2 w-full rounded-lg bg-footerGray p-5" do %>
+
+    <div class="flex justify-between pb-5">
+      <h3 class="text-lg font-bold">Body</h3>
+      <%= button_to chapter_body_edit_path(@chapter), method: :get do %>
+        Edit body
+      <% end %>
+    </div>
+
+    <div>
+      <% if @chapter.body.present? %>
+        <%= @chapter.body %>
+      <% else %>
+        <p class="font-semibold">This chapter doesn't contain any content...</p>
+        <p>Please, click on the <strong>Edit body</strong> button to add a new body.</p>
+      <% end %>
+    </div>
   <% end %>
 </section>

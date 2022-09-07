@@ -15,6 +15,10 @@ class ChaptersController < ApplicationController
   def edit
   end
 
+  def body
+    @chapter = Section.find(params[:chapter_id])
+  end
+
   def create
     @chapter = current_user.sections.build(chapter_params)
     @chapter.section_type = 2
