@@ -7,6 +7,7 @@ class EvaluationsController < ApplicationController
 
   def show
     @question = Question.new
+    @option = Option.new
   end
 
   def new

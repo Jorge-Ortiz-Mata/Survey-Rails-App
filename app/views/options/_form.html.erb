@@ -1,0 +1,15 @@
+<%= form_for [question, @option], url: question_option_create_path(question) do |f| %>
+
+  <h4>Add options</h4>
+
+  <div>
+      <%= f.rich_text_area :name %>
+  </div>
+
+  <div>
+      <span>
+          <%= f.submit %>
+      </span>
+  </div>
+
+<% end %>
