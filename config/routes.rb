@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+
+  resources :questions do
+    resources :options
+  end
+
   resources :sections do
     post "question/create", to: "questions#create"
     get "question/edit", to: "questions#edit"
