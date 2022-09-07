@@ -24,5 +24,7 @@
 }
 
 .trix-content img{
-    border: 2px solid #ff0000;
+    height: 300px;
+    width: 400px;
+    object-fit: contain;
 }

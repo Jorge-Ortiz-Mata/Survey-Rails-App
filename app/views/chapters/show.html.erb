@@ -34,9 +34,11 @@
   <%= turbo_frame_tag "chapter_body", class: "border-2 w-full rounded-lg bg-footerGray p-5" do %>
 
     <div class="flex justify-between pb-5">
-      <h3 class="text-lg font-bold">Body</h3>
+      <h3 class="text-2xl font-bold text-chapterStrong">Body</h3>
       <%= button_to chapter_body_edit_path(@chapter), method: :get do %>
-        Edit body
+        <span class="bg-chapterStrong text-white text-sm font-semibold p-3 rounded-lg">
+          Edit body
+        </span>
       <% end %>
     </div>
 
