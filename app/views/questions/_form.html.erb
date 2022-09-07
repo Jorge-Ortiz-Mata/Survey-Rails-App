@@ -1,4 +1,4 @@
-<div data-controller="reset" class="border-2 w-3/12 m-5 py-10 bg-footerGray rounded-lg flex items-center justify-center">
+<div data-controller="reset" class="border-2 w-3/12 m-5 py-10 bg-footerGray rounded-lg flex items-center justify-center relative h-96">
 	<%= form_for [@evaluation, @question], url: section_question_create_path(@evaluation),
 					data: { action: 'submit->reset#questionForm'} do |f| %>
 

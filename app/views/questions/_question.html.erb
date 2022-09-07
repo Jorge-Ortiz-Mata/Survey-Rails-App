@@ -25,14 +25,16 @@
 		</div>
 
 		<div>
-			<div>
-				<%= render 'options/form', question: question %>
+			<div id="options_all" class="my-3">
+				<h3 class="font-semibold text-sm">Options</h3>
+				<% question.options.each do |option| %>
+					<%= render 'options/option', option: option %>
+				<% end %>
 			</div>
 
 			<div>
-				<%= render 'options/option' %>
+				<%= render 'options/form', question: question %>
 			</div>
-		
 		</div>
 	</div>
 
