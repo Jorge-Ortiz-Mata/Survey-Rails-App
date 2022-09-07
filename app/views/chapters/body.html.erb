@@ -1,3 +1,22 @@
 <%= turbo_frame_tag "chapter_body", class:"border-2 w-full rounded-lg py-5" do %>
-  Hello world
+  <%= form_with(model: @chapter, url: chapter_path(@chapter), class:"flex flex-col") do |f| %>
+
+    <h3>Editing body.</h3>
+
+    <div>
+      <%= f.label :body %>
+      <%= f.rich_text_area :body %>
+    </div>
+
+    <div class="flex py-2 justify-end gap-5">
+      <span class="bg-evaluationStrong p-2 rounded-lg">
+        <%= f.submit "Update body.", class:"text-white font-semibold" %>
+      </span>
+      <span class="bg-removeIcon p-2 rounded-lg">
+        <%= link_to 'Cancel', :back, class:"text-white font-semibold" %>
+      </span>
+    </div>
+
+
+  <% end %>
 <% end %>
