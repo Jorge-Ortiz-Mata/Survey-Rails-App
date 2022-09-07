@@ -6,7 +6,7 @@ class OptionsController < ApplicationController
 
     if @option.save
       respond_to do |format|
-        format.turbo_stream { render turbo_stream: turbo_stream.append('options_all', 
+        format.turbo_stream { render turbo_stream: turbo_stream.append("question_#{@question.id}_options", 
                                                   partial: 'options/option', 
                                                   locals: { option: @option }) }
       end

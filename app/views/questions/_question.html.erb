@@ -25,7 +25,7 @@
 		</div>
 
 		<div>
-			<div id="options_all" class="my-3">
+			<div id="question_<%= question.id %>_options" class="my-3">
 				<h3 class="font-semibold text-sm">Options</h3>
 				<% question.options.each do |option| %>
 					<%= render 'options/option', option: option %>
@@ -33,7 +33,7 @@
 			</div>
 
 			<div>
-				<%= render 'options/form', question: question %>
+				<%= render 'options/form', {question: question, option: Option.new} %>
 			</div>
 		</div>
 	</div>

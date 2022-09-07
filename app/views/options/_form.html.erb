@@ -1,9 +1,9 @@
-<%= form_for [question, @option], url: question_option_create_path(question) do |f| %>
+<%= form_for [question, option], url: question_option_create_path(question) do |f| %>
 
   <h4>Add options</h4>
 
   <div>
-    <%= f.rich_text_area :name %>
+    <%= f.rich_text_area :name, id: "question_#{question.id}_option" %>
   </div>
 
   <div>
