@@ -1,6 +1,6 @@
 class OptionsController < ApplicationController
   before_action :set_question, only: %i[create]
-  before_action :set_option, only: %i[edit]
+  before_action :set_option, only: %i[edit update]
 
   def edit
   end
@@ -16,6 +16,16 @@ class OptionsController < ApplicationController
       end
     else
       format.html { render :new, status: :unprocessable_entity }
+    end
+  end
+
+  def update
+    if @option.update(option_params)
+      respond_to do |format|
+        format.turbo_stream { render turbo_stream: turbo_stream.replace("option_#{@option.id}", 
+                                                  partial: 'options/option', 
+                                                  locals: { option: @option }) }
+      end
     end
   end
 

@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :questions do
     post "option/create", to: "options#create"
     get "option/edit", to: "options#edit"
+    patch "option/update", to: "options#update"
   end
 
   resources :sections do
