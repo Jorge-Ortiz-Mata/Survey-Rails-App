@@ -1,5 +1,9 @@
 class OptionsController < ApplicationController
   before_action :set_question, only: %i[create]
+  before_action :set_option, only: %i[edit]
+
+  def edit
+  end
 
   def create
     @option = @question.options.new(option_params)
@@ -23,5 +27,9 @@ class OptionsController < ApplicationController
 
   def option_params
     params.require(:option).permit(:name)
+  end
+
+  def set_option
+    @option = Option.find(params[:id])
   end
 end
