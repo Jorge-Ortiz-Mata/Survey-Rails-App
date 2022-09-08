@@ -1,18 +1,19 @@
 <%= turbo_frame_tag "option_#{@option.id}" do %>
-  <%= form_with(model: @option, url: question_option_update_path(id: @option.id), class: "flex flex-col border-2") do |f| %>
+  <%= form_with(model: @option, url: question_option_update_path(id: @option.id), 
+        class: "flex flex-col border-2 p-5 rounded-lg bg-footerGray") do |f| %>
 
-  <h4>Edit option.</h4>
+  <h4 class="font-bold text-center mb-5">Edit option.</h4>
 
-  <div>
-    <%= f.rich_text_area :name, id: "option_#{@option.id}" %>
+  <div class="my-3">
+    <%= f.rich_text_area :name, id: "option_#{@option.id}", class: "py-5 text-sm border-2 bg-white rounded-lg" %>
   </div>
 
-  <div>
-    <span>
-      <%= f.submit %>
+  <div class="flex justify-end gap-5 my-3">
+    <span class="bg-evaluationStrong rounded-lg">
+      <%= f.submit class: "text-white p-2 text-sm font-semibold" %>
     </span>
-    <span>
-      <%= link_to "Cancel", :back %>
+    <span class="bg-removeIcon rounded-lg flex items-center">
+      <%= link_to "Cancel", :back, class: "text-white p-2 text-sm font-semibold" %>
     </span>
   </div>
 

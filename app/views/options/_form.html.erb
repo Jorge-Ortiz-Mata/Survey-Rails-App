@@ -1,14 +1,15 @@
-<%= form_for [question, option], url: question_option_create_path(question) do |f| %>
+<%= form_for [question, option], url: question_option_create_path(question),
+      html: { class: "p-5 flex flex-col" } do |f| %>
 
-  <h4>Add options</h4>
+  <h4 class="font-bold text-center mb-5">Add options</h4>
 
-  <div>
-    <%= f.rich_text_area :name, id: "question_#{question.id}_option" %>
+  <div class="my-2">
+    <%= f.rich_text_area :name, id: "question_#{question.id}_option", class: "p-2 text-sm border-2" %>
   </div>
 
-  <div>
-    <span>
-      <%= f.submit %>
+  <div class="my-2 flex justify-end">
+    <span class="bg-evaluationStrong rounded-lg">
+      <%= f.submit class:"text-sm text-white p-2 font-semibold" %>
     </span>
   </div>
 

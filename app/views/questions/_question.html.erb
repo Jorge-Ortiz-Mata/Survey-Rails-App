@@ -1,16 +1,26 @@
 <%= turbo_frame_tag "question_#{question.id}" do %>
-	<div class="my-2 p-3 border-2 bg-white rounded-lg">
+	<div class="my-10 p-3 border-2 bg-white rounded-lg shadow-lg">
 		<div class="flex justify-between">
-			<div>
-				<p class="text-sm">
-					Name: 
-					<span class="font-semibold"><%= question.name %></span>
-				</p>
+			<div class="flex w-11/12">
+				<div class="flex justify-center items-center">
+					<% if question.text_free? %>
+						<i class="fa-sharp fa-solid fa-font text-2xl mr-3"></i>
+					<% elsif question.multiple? %>
+						<i class="fa-solid fa-list text-2xl mr-3"></i>
+					<% else %>
+						<i class="fa-sharp fa-solid fa-9 text-2xl mr-3"></i>
+					<% end %>
+				</div>
 
-				<p class="text-sm">
-					Question type:
-					<span class="font-semibold"><%= question.question_type.humanize %></span>
-				</p>
+				<div>
+					<p>
+						<span class="font-semibold"><%= question.name %></span>
+					</p>
+
+					<p class="text-xs">
+						<span class="font-semibold"><%= question.question_type.humanize %></span>
+					</p>
+				</div>
 			</div>
 
 			<div class="flex gap-3">
@@ -25,11 +35,13 @@
 			</div>
 		</div>
 
+		<hr class="my-2 border-2">
+
     <% if question.level? || question.multiple? %>
 
       <div>
-        <div id="question_<%= question.id %>_options" class="my-3">
-          <h3 class="font-semibold text-sm">Options</h3>
+        <div id="question_<%= question.id %>_options" class="my-3 border-2 p-4 rounded-lg shadow">
+          <h3 class="font-bold text-sm text-center mb-2">Options</h3>
           <% question.options.order(:created_at).each do |option| %>
             <%= render 'options/option', option: option %>
           <% end %>

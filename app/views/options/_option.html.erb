@@ -1,14 +1,14 @@
 <%= turbo_frame_tag "option_#{option.id}" do %>
 
-  <div class="border-2 border-red-300 flex justify-between">
+  <div class="border-2 rounded-lg flex justify-between p-3 m-2">
 
     <div>
-      <p>
+      <span class="text-sm">
         <%= option.name %>
-      </p>
+      </span>
     </div>
 
-    <div>
+    <div class="flex gap-5">
       <%= link_to question_option_edit_path(option.question, id: option.id) do %>
         <i class="fa-solid fa-pen text-editIcon"></i>
       <% end %>
