@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     post "option/create", to: "options#create"
     get "option/edit", to: "options#edit"
     patch "option/update", to: "options#update"
+    delete "option/destroy", to: "options#destroy"
   end
 
   resources :sections do

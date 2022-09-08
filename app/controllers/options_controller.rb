@@ -1,6 +1,6 @@
 class OptionsController < ApplicationController
   before_action :set_question, only: %i[create]
-  before_action :set_option, only: %i[edit update]
+  before_action :set_option, only: %i[edit update destroy]
 
   def edit
   end
@@ -27,6 +27,13 @@ class OptionsController < ApplicationController
                                                   locals: { option: @option }) }
       end
     end
+  end
+
+  def destroy
+    respond_to do |format|
+      format.turbo_stream { render turbo_stream: turbo_stream.remove("option_#{@option.id}") }
+    end
+    @option.destroy
   end
 
   private

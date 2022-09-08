@@ -12,6 +12,11 @@
       <%= link_to question_option_edit_path(option.question, id: option.id) do %>
         <i class="fa-solid fa-pen text-editIcon"></i>
       <% end %>
+
+      <%= button_to question_option_destroy_path(option.question, id: option.id), method: :delete, 
+          form: {data: {turbo_confirm: "Are you sure?"}} do %>
+        <i class="fa-solid fa-trash text-removeIcon"></i>
+      <% end %>
     </div>
 
   </div>

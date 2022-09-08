@@ -18,7 +18,8 @@
 					<i class="fa-solid fa-pen text-editIcon"></i>
 				<% end %>
 
-				<%= button_to section_question_destroy_path(@evaluation, id: question.id), method: :delete, "data-turbo-frame": "_top" do %>
+				<%= button_to section_question_destroy_path(@evaluation, id: question.id), method: :delete, 
+					form: {data: {turbo_confirm: "Are you sure?"}},	"data-turbo-frame": "_top" do %>
 					<i class="fa-solid fa-trash text-removeIcon"></i>
 				<% end %>
 			</div>
