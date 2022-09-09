@@ -1,32 +1,27 @@
-<%= form_with(model: survey, class: "contents") do |form| %>
-  <% if survey.errors.any? %>
-    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
-      <h2><%= pluralize(survey.errors.count, "error") %> prohibited this survey from being saved:</h2>
+<%= form_with(model: @survey) do |form| %>
 
-      <ul>
-        <% survey.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="my-5">
-    <%= form.label :name %>
-    <%= form.text_field :name, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  <div class="flex items-center gap-5 my-2">
+    <%= form.label :name, class:"text-white font-bold w-2/12" %>
+    <%= form.text_field :name, class:"p-2 rounded-lg text-sm font-semibold w-full" %>
   </div>
 
-  <div class="my-5">
-    <%= form.label :description %>
-    <%= form.text_field :description, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  <div class="flex items-center gap-5 my-2">
+    <%= form.label :description, class:"text-white font-bold w-2/12" %>
+    <%= form.text_field :description, class:"p-2 rounded-lg text-sm font-semibold w-full" %>
   </div>
 
-  <div class="my-5">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  <div class="flex items-center my-2">
+    <%= form.label :avatar, class:"text-white font-bold w-2/12" %>
+    <%= form.file_field :avatar, class:"text-sm rounded-lg font-semibold" %>
   </div>
 
-  <div class="inline">
-    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+  <div class="flex py-2 justify-end gap-5">
+    <span class="bg-evaluationStrong p-2 rounded-lg">
+      <%= form.submit class:"text-white font-semibold" %>
+    </span>
+    <span class="bg-removeIcon p-2 rounded-lg">
+      <%= link_to 'Cancel', :back, class:"text-white font-semibold" %>
+    </span>
   </div>
+  
 <% end %>

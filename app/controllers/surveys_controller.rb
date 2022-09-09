@@ -16,7 +16,7 @@ class SurveysController < ApplicationController
   end
 
   def create
-    @survey = Survey.new(survey_params)
+    @survey = current_user.surveys.build(survey_params)
 
     respond_to do |format|
       if @survey.save
@@ -51,6 +51,6 @@ class SurveysController < ApplicationController
     end
 
     def survey_params
-      params.require(:survey).permit(:name, :description, :user_id)
+      params.require(:survey).permit(:name, :description, :avatar)
     end
 end
