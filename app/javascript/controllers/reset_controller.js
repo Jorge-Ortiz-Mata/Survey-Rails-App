@@ -6,7 +6,10 @@ const restoreForm = (id) => {
 
 export default class extends Controller {
   resetForm() {
-    document.getElementById('modal').remove();
+    const timer = setInterval(() => {
+      document.getElementById("modal").remove();
+      clearInterval(timer);
+    }, 100)
   }
 
   questionForm(){
