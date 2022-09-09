@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :surveys
 
   resources :questions do
     post "option/create", to: "options#create"
