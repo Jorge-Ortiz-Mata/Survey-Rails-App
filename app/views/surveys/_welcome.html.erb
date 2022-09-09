@@ -1,0 +1,32 @@
+<%= turbo_frame_tag 'modal' %>
+<section class="flex justify-center items-center p-28" id="evaluations_all">
+  <div>
+
+    <h1 class="text-center text-3xl font-bold text-surveyStrong">Surveys</h1>
+
+    <p class="flex justify-center">
+        <span class="font-semibold text-surveyStrong text-sm py-2">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
+        </span>
+    </p>
+
+    <div class="flex justify-center py-5">
+        <%= image_tag("4883612.jpg", width: "500") %>
+    </div>
+
+
+    <p class="text-center py-2 font-semibold text-surveyStrong">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+        sed do eiusmod tempor incididunt ut labore et dolore <br>
+        magna aliqua. At risus viverra adipiscing at in. 
+    </p>
+
+    <div class="flex justify-center my-4">
+      <%= link_to new_survey_path, id:"create_survey_welcome", data: {turbo_frame: 'modal'} do %>
+        <div class="p-3 bg-surveyStrong text-white text-sm font-semibold rounded-lg">
+            Create survey
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>
