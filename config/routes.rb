@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  resources :surveys
+  resources :surveys do
+    get "add/sections", to: "survey_sections#add_sections"
+    post "save/sections", to: "survey_sections#save_section"
+  end
 
   resources :questions do
     post "option/create", to: "options#create"

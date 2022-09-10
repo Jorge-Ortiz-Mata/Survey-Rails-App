@@ -1,5 +1,14 @@
 <section id="sections" class="border-2 w-9/12 mx-auto flex flex-col rounded-lg shadow-lg my-20 p-10">
-	<% sections.each do |section| %>
-		<%= render "survey_sections/survey_section", section: section %>
-	<% end %>
+
+  <div class="flex justify-end mb-5">
+    <%= button_to survey_add_sections_path(@survey), method: :get, data: { turbo_frame: "modal" } do %>
+      Add sections
+    <% end %>
+  </div>
+
+  <div>
+    <% sections.each do |section| %>
+      <%= render "survey_sections/survey_section", section: section %>
+    <% end %>
+  </div>
 </section>
