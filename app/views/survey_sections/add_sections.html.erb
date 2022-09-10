@@ -1,10 +1,15 @@
 <%= render 'shared/modal', title: "All sections." do %>
 
-  <%= form_with(url: '#') do |f| %>
+  <%= form_with(url: survey_save_sections_path(@survey)) do |f| %>
 
-  <span class="text-white">
-    <%= @survey.name %>
-  </span>
+    <%= collection_check_boxes(:sections, :ids, Section.all, :id, :name) do |b| %>
+      <span class="text-white border-2">
+        <%= b.check_box %>
+        <%= b.label %>
+      </span>
+    <% end %>
+
+    <%= f.submit 'Add sections.', class: "text-white border-2" %>
 
   <% end %>
 
