@@ -33,7 +33,9 @@ class SurveysController < ApplicationController
   def update
     respond_to do |format|
       if @survey.update(survey_params)
-        format.html { redirect_to survey_url(@survey), notice: "Survey was successfully updated." }
+        format.turbo_stream { render turbo_stream: turbo_stream.replace("survey_#{@survey.id}", 
+                                                  partial: 'surveys/card_survey', 
+                                                  locals: { survey: @survey }) }
       else
         format.html { render :edit, status: :unprocessable_entity }
       end
