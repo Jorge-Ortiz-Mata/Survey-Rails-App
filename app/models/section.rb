@@ -5,6 +5,9 @@ class Section < ApplicationRecord
   belongs_to :user
   has_many :questions, dependent: :destroy
 
+  has_many :survey_sections
+  has_many :surveys, through: :survey_sections
+
   has_rich_text :body
 
   enum section_type: [:default, :evaluation, :chapter]
