@@ -7,11 +7,19 @@ class SurveySectionsController < ApplicationController
   def save_sections
     ids = params[:sections][:ids].reject { |id| id.empty? }
     new_ids = SurveySection.check_no_repeat_records(@survey, ids, [])
-    puts "---"
-    print ids
-    puts "-"
-    print new_ids
-    puts "---"
+
+    return if new_ids.empty?
+
+    new_ids.each do |id|
+      @survey_section = SurveySection.new(survey_id: @survey.id, section_id: id)
+      @survey_section.save
+    end
+
+    respond_to do |format|
+      format.turbo_stream { render turbo_stream: turbo_stream.replace('questions_all', 
+                                                partial: 'questions/questions', 
+                                                locals: { evaluation: @evaluation }) }
+    end
   end
 
   private

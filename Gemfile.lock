@@ -103,6 +103,7 @@ GEM
     ffi (1.15.5)
     globalid (1.0.0)
       activesupport (>= 5.0)
+    hirb (0.7.3)
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
     image_processing (1.12.2)
@@ -245,6 +246,7 @@ DEPENDENCIES
   debug
   devise
   dotenv-rails
+  hirb (~> 0.7.3)
   image_processing (~> 1.2)
   importmap-rails
   jbuilder
