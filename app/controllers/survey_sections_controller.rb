@@ -1,5 +1,5 @@
 class SurveySectionsController < ApplicationController
-  before_action :set_survey, only: %i[add_sections save_sections]
+  before_action :set_survey, only: %i[add_sections save_sections delete_section]
   
   def add_sections
   end
@@ -19,6 +19,15 @@ class SurveySectionsController < ApplicationController
       format.turbo_stream { render turbo_stream: turbo_stream.replace('sections', 
                                                 partial: 'survey_sections/survey_sections', 
                                                 locals: { survey: Survey.find(@survey.id) }) }
+    end
+  end
+
+  def delete_section
+    @survey_section = SurveySection.where(survey_id: @survey.id).find_by(section_id: params[:id])
+    @survey_section.destroy
+
+    respond_to do |format|
+      format.turbo_stream { render turbo_stream: turbo_stream.remove("#{params[:id]}") }
     end
   end
 
