@@ -2,13 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
 @layer components {
   .check-user-box {
     @apply bg-footerGray text-black shadow-lg;
   }
 }
-
 
 @import 'actiontext.css';
