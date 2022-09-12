@@ -2,6 +2,7 @@ class SurveySection < ApplicationRecord
   belongs_to :survey
   belongs_to :section
 
+  before_create :configure_order
 
   private
 
@@ -10,5 +11,10 @@ class SurveySection < ApplicationRecord
 
     ids.each { |id| new_ids << id.to_i unless survey_sections.find_by(section_id: id).present? } 
     new_ids
+  end
+
+  def configure_order
+    surv_sect = SurveySection.where(survey_id: survey_id).order(order: :asc)
+    surv_sect.empty? ? self.order = 1 : self.order = surv_sect.last.order + 1
   end
 end
