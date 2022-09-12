@@ -18,7 +18,7 @@ class SurveySectionsController < ApplicationController
     respond_to do |format|
       format.turbo_stream { render turbo_stream: turbo_stream.replace('sections', 
                                                 partial: 'survey_sections/survey_sections', 
-                                                locals: { survey: @survey }) }
+                                                locals: { survey: Survey.find(@survey.id) }) }
     end
   end
 
