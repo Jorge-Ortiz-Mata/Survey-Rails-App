@@ -2,7 +2,9 @@
 
   <div class="flex justify-end mb-5">
     <%= button_to survey_add_sections_path(survey), method: :get, data: { turbo_frame: "modal" } do %>
-      Add sections
+      <span class="bg-surveyStrong font-semibold text-white shadow-lg p-2 rounded-lg">
+        Add sections
+      </span>
     <% end %>
   </div>
 
