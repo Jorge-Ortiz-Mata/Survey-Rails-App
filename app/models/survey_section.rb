@@ -17,4 +17,12 @@ class SurveySection < ApplicationRecord
     surv_sect = SurveySection.where(survey_id: survey_id).order(order: :asc)
     surv_sect.empty? ? self.order = 1 : self.order = surv_sect.last.order + 1
   end
+
+  def self.reorder_objects(id)
+    survey_sections = where(survey_id: id)
+
+    survey_sections.each.with_index do |survey_section, index|
+      survey_section.update!(order: index + 1)
+    end
+  end
 end

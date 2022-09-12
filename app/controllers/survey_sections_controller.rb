@@ -25,6 +25,7 @@ class SurveySectionsController < ApplicationController
   def delete_section
     @survey_section = SurveySection.where(survey_id: @survey.id).find_by(section_id: params[:id])
     @survey_section.destroy
+    SurveySection.reorder_objects(@survey.id)
 
     respond_to do |format|
       format.turbo_stream { render turbo_stream: turbo_stream.remove("#{params[:id]}") }
