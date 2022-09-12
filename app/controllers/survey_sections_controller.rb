@@ -16,9 +16,9 @@ class SurveySectionsController < ApplicationController
     end
 
     respond_to do |format|
-      format.turbo_stream { render turbo_stream: turbo_stream.replace('questions_all', 
-                                                partial: 'questions/questions', 
-                                                locals: { evaluation: @evaluation }) }
+      format.turbo_stream { render turbo_stream: turbo_stream.replace('sections', 
+                                                partial: 'survey_sections/survey_sections', 
+                                                locals: { survey: @survey }) }
     end
   end
 
