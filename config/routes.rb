@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     post "save/sections", to: "survey_sections#save_sections"
     delete "delete/section", to: "survey_sections#delete_section"
     patch "up/section", to: "survey_sections#up_section"
+    patch "down/section", to: "survey_sections#down_section"
   end
 
   resources :questions do

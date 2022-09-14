@@ -1,5 +1,5 @@
 class SurveySectionsController < ApplicationController
-  before_action :set_survey, only: %i[add_sections save_sections delete_section up_section]
+  before_action :set_survey, only: %i[add_sections save_sections delete_section up_section down_section]
   
   def add_sections
   end
@@ -37,6 +37,19 @@ class SurveySectionsController < ApplicationController
     @prev_surv_sec = SurveySection.where(survey_id: @survey.id).find_by(order: @survey_section.order - 1)
     @survey_section.update!(order: @survey_section.order - 1)
     @prev_surv_sec.update!(order: @prev_surv_sec.order + 1)
+
+    respond_to do |format|
+      format.turbo_stream { render turbo_stream: turbo_stream.replace('sections', 
+                                                partial: 'survey_sections/survey_sections', 
+                                                locals: { survey: Survey.find(@survey.id) }) }
+    end
+  end
+
+  def down_section
+    @survey_section = SurveySection.where(survey_id: @survey.id).find_by(section_id: params[:id])
+    @next_surv_sec = SurveySection.where(survey_id: @survey.id).find_by(order: @survey_section.order + 1)
+    @survey_section.update!(order: @survey_section.order + 1)
+    @next_surv_sec.update!(order: @next_surv_sec.order - 1)
 
     respond_to do |format|
       format.turbo_stream { render turbo_stream: turbo_stream.replace('sections', 

@@ -1,10 +1,17 @@
 <div id="<%= section.id %>" class="flex border-2 p-5 my-5 rounded-lg shadow-lg items-center">
 
   <div class="flex flex-col justify-center items-center mr-5 gap-2">
-    <%= button_to survey_up_section_path(survey, id: section.id), method: :patch do %>
-      <i class="fas fa-arrow-circle-up"></i>
+    <% if SurveySection.where(survey_id: survey.id).find_by(section_id: section.id).order != 1 %>
+      <%= button_to survey_up_section_path(survey, id: section.id), method: :patch do %>
+        <i class="fas fa-arrow-circle-up"></i>
+      <% end %>
     <% end %>
-    <i class="fas fa-arrow-circle-down"></i>
+
+    <% if SurveySection.where(survey_id: survey.id).find_by(section_id: section.id).order != SurveySection.where(survey_id: survey.id).maximum(:order) %>
+      <%= button_to survey_down_section_path(survey, id: section.id), method: :patch do %>
+        <i class="fas fa-arrow-circle-down"></i>
+      <% end %>
+    <% end %>
   </div>
 
   <div class="w-8/12 flex flex-col mr-5">

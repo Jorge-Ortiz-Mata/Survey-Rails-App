@@ -10,7 +10,7 @@
   </div>
 
   <div>
-    <% survey.sections.each do |section| %>
+    <% survey.sections.order(order: :asc).each do |section| %>
       <%= render "survey_sections/survey_section", {section: section, survey: survey} %>
     <% end %>
   </div>
