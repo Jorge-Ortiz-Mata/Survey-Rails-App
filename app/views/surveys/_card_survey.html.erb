@@ -11,7 +11,7 @@
 
   <div class="w-full p-5">
     <p class="text-3xl font-bold text-surveyStrong">
-      <%= survey.name %> 
+      <%= survey.name %>
       <i class="fa-solid fa-list-check ml-5"></i>
     </p>
 
@@ -32,5 +32,12 @@
      form: { data: { turbo_confirm: "Are you sure?" } } do %>
       <i class="fa-solid fa-trash text-removeIcon"></i>
     <% end %>
+
+    <%= button_to send_survey_path, id: "send_survey", method: :post do %>
+      <i class="fas fa-share"></i>
+    <% end %>
+
+    <i class="fas fa-cloud-download"></i>
+    <i class="fas fa-users"></i>
   </div>
 </section>

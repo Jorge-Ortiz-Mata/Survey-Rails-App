@@ -20,8 +20,8 @@ class SurveysController < ApplicationController
 
     respond_to do |format|
       if @survey.save
-        format.turbo_stream { render turbo_stream: turbo_stream.replace('surveys_all', 
-                                                  partial: 'surveys/surveys', 
+        format.turbo_stream { render turbo_stream: turbo_stream.replace('surveys_all',
+                                                  partial: 'surveys/surveys',
                                                   locals: { surveys: Survey.all }) }
 
       else
@@ -33,8 +33,8 @@ class SurveysController < ApplicationController
   def update
     respond_to do |format|
       if @survey.update(survey_params)
-        format.turbo_stream { render turbo_stream: turbo_stream.replace("survey_#{@survey.id}", 
-                                                  partial: 'surveys/card_survey', 
+        format.turbo_stream { render turbo_stream: turbo_stream.replace("survey_#{@survey.id}",
+                                                  partial: 'surveys/card_survey',
                                                   locals: { survey: @survey }) }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -48,6 +48,10 @@ class SurveysController < ApplicationController
     respond_to do |format|
       format.html { redirect_to surveys_url, notice: "Survey was successfully destroyed." }
     end
+  end
+
+  def send_survey_by_email
+    SurveyMailer.with(email: "yorch.academy@gmail.com").welcome_survey.deliver_later
   end
 
   private
