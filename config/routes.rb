@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get "/audits/:id", to: "audits#index"
+
   post "send/survey", to: "surveys#send_survey_by_email"
 
   resources :surveys do
