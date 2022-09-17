@@ -33,7 +33,7 @@
       <i class="fa-solid fa-trash text-removeIcon"></i>
     <% end %>
 
-    <%= button_to send_survey_path, id: "send_survey", method: :post do %>
+    <%= link_to survey_add_emails_path(survey), id:"send_survey", data: {turbo_frame: 'modal'} do %>
       <i class="fas fa-share"></i>
     <% end %>
 

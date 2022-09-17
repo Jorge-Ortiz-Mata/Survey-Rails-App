@@ -15,6 +15,10 @@ class SurveysController < ApplicationController
   def edit
   end
 
+  def add_emails
+    @survey = Survey.find(params[:survey_id])
+  end
+
   def create
     @survey = current_user.surveys.build(survey_params)
 
@@ -51,7 +55,10 @@ class SurveysController < ApplicationController
   end
 
   def send_survey_by_email
-    SurveyMailer.with(email: "yorch.academy@gmail.com").welcome_survey.deliver_later
+    puts " - "
+    puts params
+    puts " - "
+    # SurveyMailer.with(email: "yorch.academy@gmail.com").welcome_survey.deliver_later
   end
 
   private
