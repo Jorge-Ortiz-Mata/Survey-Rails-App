@@ -3,7 +3,17 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
+    <h1><%= @survey.name  %></h1>
+    <hr>
     <p>
-      You have successfully signed up to example.com, Thanks for joining and have a great day!</p>
+      Hello, <strong><%= @email %></strong> <br>
+      You've been invited to answer this survey.
+    </p>
+    <p>
+      <%= @message %>
+    </p>
+    <p>
+      Please, click on the next link: <%= @url %>
+    </p>
   </body>
 </html>

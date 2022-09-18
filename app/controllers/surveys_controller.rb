@@ -55,13 +55,8 @@ class SurveysController < ApplicationController
 
   def send_survey_by_email
     send_survey_params
-    puts " - "
-    puts params
-    puts @email
-    puts @subject
-    puts @message
-    puts " - "
-    # SurveyMailer.with(email: "yorch.academy@gmail.com").welcome_survey.deliver_later
+    SurveyMailer.with(email: @email, subject: @subject,
+                      message: @message, survey: @survey).welcome_survey.deliver_later
   end
 
   private
