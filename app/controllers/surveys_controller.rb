@@ -55,7 +55,10 @@ class SurveysController < ApplicationController
 
   def send_survey_by_email
     send_survey_params
-    SurveyMailer.with(email: @email, subject: @subject,
+    @log = Log.new(email: @email, status: 0, survey_id: @survey.id)
+    @log.save
+
+    SurveyMailer.with(log: @log, subject: @subject,
                       message: @message, survey: @survey).welcome_survey.deliver_later
   end
 

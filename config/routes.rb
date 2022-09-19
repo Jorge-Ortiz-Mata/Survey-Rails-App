@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  get "/audits/:id", to: "audits#index"
+  get "/audits/:id/:token_id", to: "audits#index"
 
 
   resources :surveys do
