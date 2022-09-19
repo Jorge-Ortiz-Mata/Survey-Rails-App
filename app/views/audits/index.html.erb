@@ -4,6 +4,13 @@
 
       <% if @step == 0 %>
         <%= render "welcome", { survey: @survey, step: @step } %>
+      <% else %>
+
+        <% if @survey.survey_sections.find_by(order: @step).section.evaluation? %>
+          <%= render "evaluation", { evaluation: @survey.survey_sections.find_by(order: @step).section, step: @step } %>
+        <% else %>
+          <%= render "chapter", { chapter: @survey.survey_sections.find_by(order: @step).section, step: @step } %>
+        <% end %>
 
 
 

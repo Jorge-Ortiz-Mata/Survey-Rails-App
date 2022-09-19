@@ -1,0 +1,15 @@
+<section>
+  <%= link_to audits_index_path(step: step + 1) do %>
+    Next
+  <% end %>
+  <%= link_to audits_index_path(step: step - 1) do %>
+    Back
+  <% end %>
+</section>
+
+<section>
+  <div>
+    <h2><%= evaluation.name %></h2>
+    <p><%= evaluation.description %></p>
+  </div>
+</section>
