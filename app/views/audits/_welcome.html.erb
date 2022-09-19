@@ -1,4 +1,9 @@
 <section>
+  <%= link_to audits_index_path(step: step + 1) do %>
+    Next
+  <% end %>
+</section>
+<section>
   <div>
     <h4>Welcome!</h4>
     <h2><%= survey.name %></h2>
