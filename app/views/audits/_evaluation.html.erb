@@ -1,73 +1,76 @@
-<section>
+<section class="bg-mainColor p-10">
+  <div class="bg-white px-32 pb-32 pt-16 rounded-lg flex flex-col justify-center">
+    <div class="mb-24 flex justify-between">
+      <%= link_to audits_index_path(step: step - 1) do %>
+        <span class="text-white font-semibold bg-removeIcon py-2 px-5 rounded-lg text-sm">
+          Back
+        </span>
+      <% end %>
+      <% unless @total == @step %>
+        <%= link_to audits_index_path(step: step + 1) do %>
+        <span class="text-white font-semibold bg-evaluationStrong py-2 px-5 rounded-lg text-sm">
+          Next
+        </span>
+        <% end %>
+      <% else %>
+        <%= link_to audits_finish_path do %>
+        <span class="text-white font-semibold bg-evaluationStrong py-2 px-5 rounded-lg text-sm">
+          Finsh Survey
+        </span>
+        <% end %>
+      <% end %>
+    </div>
 
-  <% unless @total == @step %>
+    <div class="flex flex-col justify-center">
+      <h2 class="text-mainColor font-bold text-5xl mt-1 mb-0 text-center"><%= evaluation.name %></h2>
+      <p class="flex justify-center mt-1 mb-5">
+        <span class="text-mainColor font-bold text-2xl">
+          <%= evaluation.description %>
+        </span>
+      </p>
+    </div>
 
-    <%= link_to audits_index_path(step: step + 1) do %>
-      Next
-    <% end %>
+    <div>
+      <%= form_with(url: audits_save_answers_path(user_token: token), method: :post) do |f| %>
+        <% evaluation.questions.each do |question| %>
+          <div class="mt-10 mb-16 mx-5 p-5 border-2 rounded-lg flex flex-col shadow-lg">
+            <div class="my-2 text-mainColor font-bold text-lg">
+              <%= question.name %>
+            </div>
 
-  <% else %>
+            <div class="my-5">
+              <% if question.text_free? %>
+                <% if Answer.find_by(question_id: question.id, user_token: token).present? %>
+                  <%= f.text_area("[question][ids][#{question.id}]",
+                        class: "border-2 p-5 rounded-lg w-full text-sm font-semibold",
+                        value: Answer.find_by(question_id: question.id, user_token: token).name) %>
+                <% else %>
+                  <%= f.text_area("[question][ids][#{question.id}]",
+                        class: "border-2 p-5 rounded-lg w-full text-sm font-semibold") %>
+                <% end %>
+              <% else %>
 
-    <%= link_to audits_finish_path do %>
-      Finsh Survey
-    <% end %>
-
-  <% end %>
-  <%= link_to audits_index_path(step: step - 1) do %>
-    Back
-  <% end %>
-</section>
-
-<section>
-  <div>
-    <h2><%= evaluation.name %></h2>
-    <p><%= evaluation.description %></p>
-  </div>
-
-  <div>
-    <%= form_with(url: audits_save_answers_path(user_token: token), method: :post) do |f| %>
-
-      <% evaluation.questions.each do |question| %>
-
-      <div class="m-5 p-5 border-2 border-red-600">
-        <%= question.name %>
-
-
-        <% if question.text_free? %>
-
-          <% if Answer.find_by(question_id: question.id, user_token: token).present? %>
-
-            <%= f.text_area("[question][ids][#{question.id}]", value: Answer.find_by(question_id: question.id, user_token: token).name) %>
-
-          <% else %>
-
-            <%= f.text_area("[question][ids][#{question.id}]") %>
-
-          <% end %>
-
-        <% else %>
-
-          <% question.options.each do |option| %>
-            <p>
-              <%= f.radio_button("[question][ids][#{question.id}]", option.id,
-                  { checked: Answer.find_by(name: option.id, user_token: token).present?,
-                    id: "#{option.id}" }) %>
-              <%= "#{option.name.to_plain_text}" %>
-            </p>
-
-          <% end %>
-
+                <% question.options.each do |option| %>
+                  <div class="flex w-full items-center rounded-lg p-2">
+                    <%= f.radio_button("[question][ids][#{question.id}]", option.id,
+                        { checked: Answer.find_by(name: option.id, user_token: token).present?,
+                          id: "#{option.id}", class:"border-2 mr-5" }) %>
+                    <span>
+                      <%= option.name.to_plain_text %>
+                    </span>
+                  </div>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
         <% end %>
 
-
-      </div>
-
+        <div class="flex py-2 justify-end gap-5">
+          <span class="bg-evaluationStrong p-2 rounded-lg">
+            <%= f.submit 'Submit answers', class:"text-white font-semibold" %>
+          </span>
+        </div>
       <% end %>
-
-      <div>
-        <%= f.submit "Submit answers" %>
-      </div>
-
-    <% end %>
+    </div>
   </div>
 </section>
