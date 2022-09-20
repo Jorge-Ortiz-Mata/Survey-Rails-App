@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   get "/audits/:id/:token_id/:step", to: "audits#index", as: "audits_index"
+  post "/save/answers", to: "audits#save_answers", as: "audits_save_answers"
 
   resources :surveys do
     get "add/emails", to: "surveys#add_emails"

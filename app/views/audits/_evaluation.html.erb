@@ -14,7 +14,7 @@
   </div>
 
   <div>
-    <%= form_with(url: "#", method: :post) do |f| %>
+    <%= form_with(url: audits_save_answers_path(user_token: token), method: :post) do |f| %>
 
       <% evaluation.questions.each do |question| %>
 
@@ -29,7 +29,7 @@
 
           <% question.options.each do |option| %>
             <p>
-              <%= f.radio_button("[question][ids][#{question.id}]", id: "#{option.id}") %>
+              <%= f.radio_button("[question][ids][#{question.id}]", option.id, id: "#{option.id}") %>
               <%= "#{option.name.to_plain_text}" %>
             </p>
 

@@ -3,7 +3,21 @@ class AuditsController < ApplicationController
   before_action :set_survey, only: %i[index]
 
   def index
+    @token = params[:token_id]
     @step = params[:step].to_i
+  end
+
+  def save_answers
+    @ids = params[:question][:ids]
+
+    @ids.each do |key, value|
+
+      if value.present?
+        @answer = Answer.new(name: value, question_id: key, user_token: params[:user_token])
+        @answer.save
+      end
+
+    end
   end
 
   private
