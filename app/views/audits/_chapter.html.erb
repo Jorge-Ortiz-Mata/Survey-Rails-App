@@ -1,28 +1,36 @@
-<section>
-  <% unless @total == @step %>
+<section class="bg-mainColor p-10">
+  <div class="bg-white px-32 pb-32 pt-16 rounded-lg flex flex-col justify-center">
+    <div class="mb-24 flex justify-between">
+      <%= link_to audits_index_path(step: step - 1) do %>
+        <span class="text-white font-semibold bg-removeIcon py-2 px-5 rounded-lg text-sm">
+          Back
+        </span>
+      <% end %>
+      <% unless @total == @step %>
+        <%= link_to audits_index_path(step: step + 1) do %>
+        <span class="text-white font-semibold bg-evaluationStrong py-2 px-5 rounded-lg text-sm">
+          Next
+        </span>
+        <% end %>
+      <% else %>
+        <%= link_to audits_finish_path do %>
+        <span class="text-white font-semibold bg-evaluationStrong py-2 px-5 rounded-lg text-sm">
+          Finsh Survey
+        </span>
+        <% end %>
+      <% end %>
+    </div>
 
-    <%= link_to audits_index_path(step: step + 1) do %>
-      Next
-    <% end %>
-
-  <% else %>
-
-    <%= link_to audits_finish_path do %>
-      Finsh Survey
-    <% end %>
-
-  <% end %>
-  <%= link_to audits_index_path(step: step - 1) do %>
-    Back
-  <% end %>
-</section>
-
-<section>
-  <div>
-    <h2><%= chapter.name %></h2>
-    <p><%= chapter.description %></p>
-  </div>
-  <div>
-    <%= chapter.body %>
+    <div class="flex flex-col justify-center">
+      <h2 class="text-mainColor font-bold text-5xl mt-1 mb-0 text-center"><%= chapter.name %></h2>
+      <p class="flex justify-center mt-1 mb-5">
+        <span class="text-mainColor font-bold text-2xl">
+          <%= chapter.description %>
+        </span>
+      </p>
+      <div class="text-mainColor text-center my-10">
+        <%= chapter.body %>
+      </div>
+    </div>
   </div>
 </section>

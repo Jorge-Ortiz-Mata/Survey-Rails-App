@@ -1,25 +1,32 @@
-<section>
-  <%= link_to audits_index_path(step: step + 1) do %>
-    Next
-  <% end %>
-</section>
-<section>
-  <div>
-    <h4>Welcome!</h4>
-    <h2><%= survey.name %></h2>
-    <p>
-      <%= survey.description %>
-    </p>
+<section class="bg-mainColor p-10">
+  <div class="bg-white px-32 pb-32 pt-16 rounded-lg flex flex-col justify-center">
+    <div class="mb-24 flex justify-end">
+      <%= link_to audits_index_path(step: step + 1) do %>
+        <span class="text-white font-semibold bg-evaluationStrong py-2 px-5 rounded-lg text-sm">
+          Next
+        </span>
+      <% end %>
+    </div>
 
-    <p>
-      You are going to answer this Survey.
-    </p>
+    <div class="flex flex-col justify-center">
+      <h4 class="text-mainColor font-semibold text-2xl mt-5 mb-2 text-center">Welcome!</h4>
+      <h2 class="text-mainColor font-bold text-5xl mt-1 mb-0 text-center"><%= survey.name %></h2>
+      <p class="flex justify-center mt-1 mb-5">
+        <span class="text-mainColor font-bold text-2xl">
+          <%= survey.description %>
+        </span>
+      </p>
 
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-      Debitis repudiandae quibusdam veniam quam. Assumenda blanditiis <br>
-      officia mollitia similique itaque recusandae ratione?
-      Expedita consequuntur dolorum illum fuga velit! Distinctio, tempora suscipit?
-    </p>
+      <p class="text-mainColor font-semibold text-center mt-5">
+        You are going to answer this Survey.
+      </p>
+
+      <p class="text-mainColor font-semibold text-center my-3">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        Debitis repudiandae quibusdam veniam quam. Assumenda blanditiis <br>
+        officia mollitia similique itaque recusandae ratione?
+        Expedita consequuntur dolorum illum fuga velit! Distinctio, tempora suscipit?
+      </p>
+    </div>
   </div>
 </section>
