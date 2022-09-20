@@ -9,7 +9,6 @@ class AuditsController < ApplicationController
   end
 
   def finish
-
   end
 
   def save_answers
