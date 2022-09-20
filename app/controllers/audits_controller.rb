@@ -8,14 +8,18 @@ class AuditsController < ApplicationController
   end
 
   def save_answers
-    @ids = params[:question][:ids]
+    @ids = params[:question][:ids].reject { |key, value| value.empty? }
 
     @ids.each do |key, value|
 
-      if value.present?
-        @answer = Answer.new(name: value, question_id: key, user_token: params[:user_token])
-        @answer.save
+      @answer = Answer.find_by(question_id: key, user_token: params[:user_token])
+
+      if @answer.nil?
+        Answer.create!(name: value, question_id: key, user_token: params[:user_token])
+      else
+        @answer.update!(name: value)
       end
+
 
     end
   end
