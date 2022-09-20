@@ -26,11 +26,11 @@
 
           <% if Answer.find_by(question_id: question.id, user_token: token).present? %>
 
-          <%= f.text_area("[question][ids][#{question.id}]", value: Answer.find_by(question_id: question.id, user_token: token).name) %>
+            <%= f.text_area("[question][ids][#{question.id}]", value: Answer.find_by(question_id: question.id, user_token: token).name) %>
 
           <% else %>
 
-          <%= f.text_area("[question][ids][#{question.id}]") %>
+            <%= f.text_area("[question][ids][#{question.id}]") %>
 
           <% end %>
 
@@ -40,8 +40,7 @@
             <p>
               <%= f.radio_button("[question][ids][#{question.id}]", option.id,
                   { checked: Answer.find_by(name: option.id, user_token: token).present?,
-                    id: "#{option.id}"
-                  }) %>
+                    id: "#{option.id}" }) %>
               <%= "#{option.name.to_plain_text}" %>
             </p>
 
