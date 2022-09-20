@@ -12,4 +12,40 @@
     <h2><%= evaluation.name %></h2>
     <p><%= evaluation.description %></p>
   </div>
+
+  <div>
+    <%= form_with(url: "#", method: :post) do |f| %>
+
+      <% evaluation.questions.each do |question| %>
+
+      <div class="m-5 p-5 border-2 border-red-600">
+        <%= question.name %>
+
+
+        <% if question.text_free? %>
+          <%= f.text_area("[question][ids][#{question.id}]") %>
+
+        <% else %>
+
+          <% question.options.each do |option| %>
+            <p>
+              <%= f.radio_button("[question][ids][#{question.id}]", id: "#{option.id}") %>
+              <%= "#{option.name.to_plain_text}" %>
+            </p>
+
+          <% end %>
+
+        <% end %>
+
+
+      </div>
+
+      <% end %>
+
+      <div>
+        <%= f.submit "Submit answers" %>
+      </div>
+
+    <% end %>
+  </div>
 </section>
