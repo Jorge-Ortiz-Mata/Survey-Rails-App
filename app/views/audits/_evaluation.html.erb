@@ -1,6 +1,17 @@
 <section>
-  <%= link_to audits_index_path(step: step + 1) do %>
-    Next
+
+  <% unless @total == @step %>
+
+    <%= link_to audits_index_path(step: step + 1) do %>
+      Next
+    <% end %>
+
+  <% else %>
+
+    <%= link_to audits_finish_path do %>
+      Finsh Survey
+    <% end %>
+
   <% end %>
   <%= link_to audits_index_path(step: step - 1) do %>
     Back

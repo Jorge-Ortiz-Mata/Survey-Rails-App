@@ -5,6 +5,11 @@ class AuditsController < ApplicationController
   def index
     @token = params[:token_id]
     @step = params[:step].to_i
+    @total = @survey.sections.count
+  end
+
+  def finish
+
   end
 
   def save_answers
