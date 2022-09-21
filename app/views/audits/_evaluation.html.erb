@@ -13,7 +13,8 @@
         </span>
         <% end %>
       <% else %>
-        <%= button_to audits_finish_path, method: :get, params: { id: survey.id } do %>
+        <%= button_to audits_finish_path, method: :get,
+              params: { id: survey.id, token_id: token } do %>
           <span class="text-white font-semibold bg-evaluationStrong py-2 px-5 rounded-lg text-sm">
             Finsh Survey
           </span>
