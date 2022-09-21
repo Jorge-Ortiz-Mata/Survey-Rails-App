@@ -4,6 +4,7 @@ class Survey < ApplicationRecord
   has_one_attached :avatar, dependent: :destroy
   has_many :survey_sections
   has_many :sections, through: :survey_sections
+  has_many :answers, dependent: :destroy
 
   before_create :set_uuid
 

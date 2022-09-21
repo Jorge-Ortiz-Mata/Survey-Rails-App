@@ -62,6 +62,14 @@ class SurveysController < ApplicationController
                       message: @message, survey: @survey).welcome_survey.deliver_later
   end
 
+  def export_answers
+    puts " - "
+    puts " - "
+    puts params
+    puts " - "
+    puts " - "
+  end
+
   private
     def set_survey
       @survey = Survey.find(params[:id] || params[:survey_id])
