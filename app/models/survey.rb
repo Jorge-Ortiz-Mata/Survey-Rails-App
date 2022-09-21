@@ -5,6 +5,7 @@ class Survey < ApplicationRecord
   has_many :survey_sections
   has_many :sections, through: :survey_sections
   has_many :answers, dependent: :destroy
+  has_many :logs, dependent: :destroy
 
   before_create :set_uuid
 

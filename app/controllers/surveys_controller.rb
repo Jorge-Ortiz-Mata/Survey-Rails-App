@@ -1,6 +1,6 @@
 require "csv"
 class SurveysController < ApplicationController
-  before_action :set_survey, only: %i[ show edit update destroy add_emails send_survey_by_email export_answers]
+  before_action :set_survey, except: %i[ index new create ]
 
   def index
     @surveys = Survey.all
@@ -17,6 +17,9 @@ class SurveysController < ApplicationController
   end
 
   def add_emails
+  end
+
+  def participants
   end
 
   def create
