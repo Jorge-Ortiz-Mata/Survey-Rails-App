@@ -9,6 +9,7 @@ class AuditsController < ApplicationController
   end
 
   def finish
+    @survey = Survey.find(params[:id])
   end
 
   def save_answers

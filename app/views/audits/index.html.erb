@@ -8,9 +8,10 @@
 
         <% if @survey.survey_sections.find_by(order: @step).section.evaluation? %>
           <%= render "evaluation", { evaluation: @survey.survey_sections.find_by(order: @step).section,
-                                      step: @step, token: @token } %>
+                                      step: @step, token: @token, survey: @survey } %>
         <% else %>
-          <%= render "chapter", { chapter: @survey.survey_sections.find_by(order: @step).section, step: @step } %>
+          <%= render "chapter", { chapter: @survey.survey_sections.find_by(order: @step).section,
+                                      step: @step, survey: @survey } %>
         <% end %>
 
 
