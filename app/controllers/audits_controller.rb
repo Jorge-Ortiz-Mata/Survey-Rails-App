@@ -1,6 +1,6 @@
 class AuditsController < ApplicationController
   layout "audits"
-  before_action :set_survey, only: %i[index]
+  before_action :set_survey, only: %i[index save_answers]
 
   def index
     @token = params[:token_id]
@@ -18,7 +18,8 @@ class AuditsController < ApplicationController
 
       @answer = Answer.find_by(question_id: key, user_token: params[:user_token])
       if @answer.nil?
-        Answer.create!(name: value, question_id: key, user_token: params[:user_token])
+        Answer.create!(name: value, question_id: key,
+                      user_token: params[:user_token], survey_id: @survey.id)
       else
         @answer.update!(name: value)
       end

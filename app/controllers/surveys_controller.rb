@@ -1,5 +1,6 @@
+require "csv"
 class SurveysController < ApplicationController
-  before_action :set_survey, only: %i[ show edit update destroy add_emails send_survey_by_email]
+  before_action :set_survey, only: %i[ show edit update destroy add_emails send_survey_by_email export_answers]
 
   def index
     @surveys = Survey.all
@@ -63,11 +64,11 @@ class SurveysController < ApplicationController
   end
 
   def export_answers
-    puts " - "
-    puts " - "
-    puts params
-    puts " - "
-    puts " - "
+    @answers = @survey.answers
+
+    respond_to do |format|
+      format.csv { send_data @answers.to_csv, filename: "#{@survey.name}-#{Date.today}.csv" }
+    end
   end
 
   private
