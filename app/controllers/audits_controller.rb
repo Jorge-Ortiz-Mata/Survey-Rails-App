@@ -9,6 +9,7 @@ class AuditsController < ApplicationController
     @log.update!(status: 1) if @log.default?
     @log.update!(status: 2) unless @step.zero?
     @total = @survey.sections.count
+    @bar = (@step.to_f / @total.to_f) * 100
   end
 
   def finish

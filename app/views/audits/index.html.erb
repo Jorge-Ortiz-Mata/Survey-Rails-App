@@ -5,10 +5,10 @@
     <% else %>
       <% if @survey.survey_sections.find_by(order: @step).section.evaluation? %>
         <%= render "evaluation", { evaluation: @survey.survey_sections.find_by(order: @step).section,
-                                    step: @step, token: @token, survey: @survey } %>
+                                    step: @step, token: @token, survey: @survey, bar: @bar } %>
       <% else %>
         <%= render "chapter", { chapter: @survey.survey_sections.find_by(order: @step).section,
-                                    step: @step, survey: @survey, token: @token } %>
+                                    step: @step, survey: @survey, token: @token, bar: @bar } %>
       <% end %>
     <% end %>
   <% else %>

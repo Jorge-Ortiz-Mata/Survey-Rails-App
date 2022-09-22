@@ -1,6 +1,6 @@
 <section class="bg-mainColor p-10">
   <div class="bg-white px-32 pb-32 pt-16 rounded-lg flex flex-col justify-center">
-    <div class="mb-24 flex justify-between">
+    <div class="mb-14 flex justify-between">
       <%= link_to audits_index_path(step: step - 1) do %>
         <span class="text-white font-semibold bg-removeIcon py-2 px-5 rounded-lg text-sm">
           Back
@@ -20,6 +20,10 @@
           </span>
         <% end %>
       <% end %>
+    </div>
+
+    <div class="mb-16 w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+      <div class="bg-blue-600 h-2.5 rounded-full" style="width: <%= "#{bar.to_i}%" %>"></div>
     </div>
 
     <div class="flex flex-col justify-center">
