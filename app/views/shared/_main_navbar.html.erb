@@ -5,18 +5,22 @@
         <i class="fa-solid fa-book text-2xl"></i> Survey Rails App.
       <% end %>
     </ul>
-    <ul class="flex gap-3">
+    <ul class="flex gap-3" data-controller="signout">
       <% if current_user %>
         <li>
           <%= current_user.email %>
         </li>
-        <li class="bg-red-700 rounded">
-          <%= button_to 'Sign out', destroy_user_session_path, method: :delete, class: "py-1 px-4 text-sm text-black font-semibold" %>
+        <li class="rounded-lg hidden absolute top-14 right-10 h-16 w-32 bg-mainColor p-5 flex flex-col justify-end items-center border-2" id="sign_out_li">
+          <%= button_to destroy_user_session_path, method: :delete, class: "mb-0 mt-auto" do %>
+            <span class="bg-removeIcon rounded-lg py-2 px-4 text-xs text-white font-semibold">
+              Sign Out
+            </span>
+          <% end %>
         </li>
         <li class="flex items-center">
-          <%= button_to root_path, id: "open_options_icon" do %>
+          <button data-action="click->signout#signout">
             <i class="fa-solid fa-gear"></i>
-          <% end %>
+          </button>
         </li>
       <% else %>
         <li class="bg-signIn rounded">
