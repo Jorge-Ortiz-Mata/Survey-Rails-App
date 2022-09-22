@@ -10,5 +10,8 @@ class Section < ApplicationRecord
 
   has_rich_text :body
 
+  validates :name, presence: true
+  validates :description, presence: true
+
   enum section_type: [:default, :evaluation, :chapter]
 end

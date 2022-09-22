@@ -1,0 +1,4 @@
+<%= turbo_frame_tag 'modal' %>
+<%= render 'shared/modal', title: "Create evaluation." do %>
+  <%= render 'form', url: evaluations_path %>
+<% end %>

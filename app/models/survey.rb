@@ -7,6 +7,9 @@ class Survey < ApplicationRecord
   has_many :answers, dependent: :destroy
   has_many :logs, dependent: :destroy
 
+  validates :name, presence: true
+  validates :description, presence: true
+
   before_create :set_uuid
 
   private

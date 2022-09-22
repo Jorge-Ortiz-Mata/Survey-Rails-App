@@ -31,7 +31,9 @@ class ChaptersController < ApplicationController
                                                   locals: { chapters: Section.grab_all_chapters }) }
 
       else
-        format.html { render :new, status: :unprocessable_entity }
+        format.turbo_stream { render turbo_stream: turbo_stream.replace('modal',
+                                                  partial: 'errors/new_chapter',
+                                                  locals: {}) }
       end
     end
   end

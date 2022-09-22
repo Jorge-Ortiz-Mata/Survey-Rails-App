@@ -28,7 +28,9 @@ class EvaluationsController < ApplicationController
                                                   locals: { evaluations: Section.grab_all_evaluations }) }
 
       else
-        format.html { render :new, status: :unprocessable_entity }
+        format.turbo_stream { render turbo_stream: turbo_stream.replace('modal',
+                                                  partial: 'errors/new_evaluation',
+                                                  locals: {}) }
       end
     end
   end

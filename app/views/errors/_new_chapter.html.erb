@@ -1,3 +1,4 @@
+<%= turbo_frame_tag 'modal' %>
 <%= render 'shared/modal', title: "Create chapter." do %>
   <%= render 'form', { url: chapters_path, button_text: "Create chapter." } %>
 <% end %>
