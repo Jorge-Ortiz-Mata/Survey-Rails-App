@@ -1,17 +1,18 @@
 class QuestionsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_evaluation, only: %i[create update]
   before_action :set_question, only: %i[edit update destroy]
 
   def edit
   end
-  
+
   def create
     @question = @evaluation.questions.build(question_params)
 
     if @question.save
       respond_to do |format|
-          format.turbo_stream { render turbo_stream: turbo_stream.replace('questions_all', 
-                                                    partial: 'questions/questions', 
+          format.turbo_stream { render turbo_stream: turbo_stream.replace('questions_all',
+                                                    partial: 'questions/questions',
                                                     locals: { evaluation: @evaluation }) }
       end
     else
@@ -22,8 +23,8 @@ class QuestionsController < ApplicationController
   def update
     if @question.update(question_params)
       respond_to do |format|
-        format.turbo_stream { render turbo_stream: turbo_stream.replace("question_#{@question.id}", 
-                                                  partial: 'questions/question', 
+        format.turbo_stream { render turbo_stream: turbo_stream.replace("question_#{@question.id}",
+                                                  partial: 'questions/question',
                                                   locals: { question: @question }) }
       end
     end

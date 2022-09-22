@@ -1,4 +1,5 @@
 class OptionsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_question, only: %i[create]
   before_action :set_option, only: %i[edit update destroy]
 
@@ -10,8 +11,8 @@ class OptionsController < ApplicationController
 
     if @option.save
       respond_to do |format|
-        format.turbo_stream { render turbo_stream: turbo_stream.append("question_#{@question.id}_options", 
-                                                  partial: 'options/option', 
+        format.turbo_stream { render turbo_stream: turbo_stream.append("question_#{@question.id}_options",
+                                                  partial: 'options/option',
                                                   locals: { option: @option }) }
       end
     else
@@ -22,8 +23,8 @@ class OptionsController < ApplicationController
   def update
     if @option.update(option_params)
       respond_to do |format|
-        format.turbo_stream { render turbo_stream: turbo_stream.replace("option_#{@option.id}", 
-                                                  partial: 'options/option', 
+        format.turbo_stream { render turbo_stream: turbo_stream.replace("option_#{@option.id}",
+                                                  partial: 'options/option',
                                                   locals: { option: @option }) }
       end
     end

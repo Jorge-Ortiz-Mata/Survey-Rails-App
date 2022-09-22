@@ -1,8 +1,9 @@
 class EvaluationsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_evaluation, only: %i[ show edit update destroy ]
 
   def index
-    @evaluations = Section.grab_all_evaluations
+    @evaluations = current_user.sections.grab_all_evaluations
   end
 
   def show
@@ -22,8 +23,8 @@ class EvaluationsController < ApplicationController
 
     respond_to do |format|
       if @evaluation.save
-        format.turbo_stream { render turbo_stream: turbo_stream.replace('evaluations_all', 
-                                                  partial: 'evaluations/evaluations', 
+        format.turbo_stream { render turbo_stream: turbo_stream.replace('evaluations_all',
+                                                  partial: 'evaluations/evaluations',
                                                   locals: { evaluations: Section.grab_all_evaluations }) }
 
       else

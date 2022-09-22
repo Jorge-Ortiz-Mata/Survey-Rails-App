@@ -1,9 +1,10 @@
 require "csv"
 class SurveysController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_survey, except: %i[ index new create ]
 
   def index
-    @surveys = Survey.all
+    @surveys = current_user.surveys.all
   end
 
   def show

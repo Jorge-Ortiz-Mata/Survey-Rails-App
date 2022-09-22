@@ -1,4 +1,5 @@
 class SurveySectionsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_survey
   before_action :set_survey_section, except: %i[add_sections save_sections]
 

@@ -1,8 +1,9 @@
 class ChaptersController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_chapter, only: %i[ show edit update destroy ]
 
   def index
-    @chapters = Section.grab_all_chapters
+    @chapters = current_user.sections.grab_all_chapters
   end
 
   def show
@@ -25,8 +26,8 @@ class ChaptersController < ApplicationController
 
     respond_to do |format|
       if @chapter.save
-        format.turbo_stream { render turbo_stream: turbo_stream.replace('chapters_all', 
-                                                  partial: 'chapters/chapters', 
+        format.turbo_stream { render turbo_stream: turbo_stream.replace('chapters_all',
+                                                  partial: 'chapters/chapters',
                                                   locals: { chapters: Section.grab_all_chapters }) }
 
       else
