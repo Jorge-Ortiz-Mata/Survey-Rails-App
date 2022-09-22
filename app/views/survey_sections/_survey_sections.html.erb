@@ -2,14 +2,12 @@
 <section id="sections" class="border-2 w-9/12 mx-auto flex flex-col rounded-lg shadow-lg my-20 p-10">
 
   <%= turbo_frame_tag 'participants' do %>
-
-    <div>
-      <%= button_to survey_participants_path(survey), method: :get do %>
-        Users
-      <% end %>
-    </div>
-
     <div class="flex justify-end mb-5">
+
+      <%= button_to survey_participants_path(survey), method: :get do %>
+        <i class="fas fa-users text-surveyStrong text-2xl mr-5"></i>
+      <% end %>
+
       <%= button_to survey_add_sections_path(survey), method: :get, data: { turbo_frame: "modal" } do %>
         <span class="bg-surveyStrong font-semibold text-white shadow-lg p-2 rounded-lg">
           Add sections
