@@ -6,8 +6,10 @@ class AuditsController < ApplicationController
     @step = params[:step].to_i
     set_log
 
-    @log.update!(status: 1) if @log.default?
-    @log.update!(status: 2) unless @step.zero?
+    unless @log.finish?
+      @log.update!(status: 1) if @log.default?
+      @log.update!(status: 2) unless @step.zero?
+    end
     @total = @survey.sections.count
     @bar = (@step.to_f / @total.to_f) * 100
   end
