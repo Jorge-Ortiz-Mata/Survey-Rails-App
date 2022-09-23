@@ -41,7 +41,9 @@ class ChaptersController < ApplicationController
   def update
     respond_to do |format|
       if @chapter.update(chapter_params)
-        format.html { redirect_to chapter_url(@chapter), notice: "Chapter was successfully updated." }
+        format.turbo_stream { render turbo_stream: turbo_stream.replace("section_#{@chapter.id}",
+                                                  partial: 'chapters/card_chapter',
+                                                  locals: { chapter: @chapter }) }
       else
         format.html { render :edit, status: :unprocessable_entity }
       end

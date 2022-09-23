@@ -38,7 +38,9 @@ class EvaluationsController < ApplicationController
   def update
     respond_to do |format|
       if @evaluation.update(evaluation_params)
-        format.html { redirect_to evaluation_url(@evaluation), notice: "Evaluation was successfully updated." }
+        format.turbo_stream { render turbo_stream: turbo_stream.replace("section_#{@evaluation.id}",
+                                                  partial: 'evaluations/card_evaluation',
+                                                  locals: { evaluation: @evaluation }) }
       else
         format.html { render :edit, status: :unprocessable_entity }
       end
